@@ -36,6 +36,19 @@ export interface WorksDoc {
   }[];
 }
 
+export interface EducationsDoc {
+  id: string;
+  data: {
+    school: string;
+    degree: string;
+    href: string;
+    logoUrl: string;
+    start: string;
+    end: string;
+    description: string;
+  }[];
+}
+
 const db = getFirestore(app);
 
 /**
@@ -90,6 +103,24 @@ export const fetchWorks = async (userId: string): Promise<WorksDoc | null> => {
   return null;
 };
 
+export const fetchEducation = async (
+  userId: string
+): Promise<EducationsDoc | null> => {
+  const educationCol = collection(db, `users/${userId}/educations`);
+  const querySnapshot = await getDocs(educationCol);
+  const docSnap = querySnapshot.docs[0];
+  if (docSnap) {
+    const docData = docSnap.data();
+    if (Array.isArray(docData.data)) {
+      return {
+        id: docSnap.id,
+        data: docData.data,
+      };
+    }
+  }
+  return null;
+};
+
 /**
  * Fetches both the user and their skills in parallel.
  * @param userId The Firestore document ID of the user.
@@ -99,11 +130,13 @@ export async function fetchUserAndSkills(userId: string): Promise<{
   user: User | null;
   skills: SkillDoc | null;
   works: WorksDoc | null;
+  educations: EducationsDoc | null;
 }> {
-  const [user, skills, works] = await Promise.all([
+  const [user, skills, works, educations] = await Promise.all([
     fetchUser(),
     fetchSkills(userId),
     fetchWorks(userId),
+    fetchEducation(userId),
   ]);
-  return { user, skills, works };
+  return { user, skills, works, educations };
 }
