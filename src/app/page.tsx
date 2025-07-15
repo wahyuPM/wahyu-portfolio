@@ -22,8 +22,6 @@ export default function Page() {
     queryFn: () => fetchUserAndSkills("wahyu-pratama"),
   });
 
-  console.log(data);
-
   if (isLoading) {
     return <PageSkeleton />;
   }
