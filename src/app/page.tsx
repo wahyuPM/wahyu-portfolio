@@ -13,6 +13,7 @@ import Markdown from "react-markdown";
 import { useQuery } from "@tanstack/react-query";
 import { fetchUserAndSkills } from "@/http/user";
 import PageSkeleton from "@/components/page-skeleton";
+import GitHubCalendar from "react-github-calendar";
 
 const BLUR_FADE_DELAY = 0.04;
 
@@ -128,6 +129,7 @@ export default function Page() {
           </div>
         </div>
       </section>
+      <GitHubCalendar username="wahyuPM" />
       <section id="projects">
         <div className="space-y-12 w-full py-12">
           <BlurFade delay={BLUR_FADE_DELAY * 11}>
