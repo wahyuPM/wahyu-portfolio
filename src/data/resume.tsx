@@ -27,24 +27,21 @@ export const DATA = {
     "PHP",
     "Laravel",
   ],
-  navbar: [
-    { href: "/", icon: HomeIcon, label: "Home" },
-    { href: "/blog", icon: NotebookIcon, label: "Blog" },
-  ],
+  navbar: [{ href: "/", icon: HomeIcon, label: "Home" }],
   contact: {
     email: "wahyupratama191@gmail.com",
     tel: "+123456789",
     social: {
       GitHub: {
         name: "GitHub",
-        url: "https://dub.sh/dillion-github",
+        url: "https://github.com/wahyuPM",
         icon: Icons.github,
 
         navbar: true,
       },
       LinkedIn: {
         name: "LinkedIn",
-        url: "https://dub.sh/dillion-linkedin",
+        url: "https://www.linkedin.com/in/wahyu-pratama-08088a1b1/",
         icon: Icons.linkedin,
 
         navbar: true,
@@ -54,20 +51,20 @@ export const DATA = {
         url: "https://dub.sh/dillion-twitter",
         icon: Icons.x,
 
-        navbar: true,
+        navbar: false,
       },
       Youtube: {
         name: "Youtube",
         url: "https://dub.sh/dillion-youtube",
         icon: Icons.youtube,
-        navbar: true,
+        navbar: false,
       },
       email: {
         name: "Send Email",
-        url: "#",
+        url: "mailto:wahyupratama191@gmail.com",
         icon: Icons.email,
 
-        navbar: false,
+        navbar: true,
       },
     },
   },
